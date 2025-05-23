@@ -26,7 +26,7 @@ export const Base = {
       <HoverCardContent className="w-80">
         <div className="flex justify-between space-x-4">
           <Avatar>
-            <AvatarImage src="https://github.com/vercel.png" />
+            <AvatarImage src="/placeholder.svg" /> {/* Replaced network image with local placeholder */}
             <AvatarFallback>VC</AvatarFallback>
           </Avatar>
           <div className="space-y-1">

@@ -66,10 +66,12 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-      },
-      animation: {
+      },      animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        'glow': '0 0 8px 0 rgba(255, 255, 255, 0.5)',
       },
     },
   },

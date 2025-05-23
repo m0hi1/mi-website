@@ -13,7 +13,7 @@ export default meta;
 export const Base = {
   render: () => (
     <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" />
+      <AvatarImage src="/placeholder.svg" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   ),

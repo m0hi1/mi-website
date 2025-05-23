@@ -1,29 +1,30 @@
 import { Suspense, lazy } from "react";
-import { useRoutes, Routes, Route } from "react-router-dom";
-import Home from "./components/home";
-import routes from "tempo-routes";
+import { Routes, Route } from "react-router-dom";
+import PageLoadingWrapper from "./components/PageLoadingWrapper";
 
 // Lazy load pages for better performance
-const AboutPage = lazy(() => import("./pages/About"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AboutPage = lazy(() => import("./pages/About.tsx"));
 const ContactPage = lazy(() => import("./pages/Contact"));
-const ProductDetail = lazy(() => import("./pages/product/[id]"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
+const ProductDetailPage = lazy(() => import("./pages/ProductDetailPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function App() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
-      <>
+    <PageLoadingWrapper>
+      <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          {import.meta.env.VITE_TEMPO === "true" && (
-            <Route path="/tempobook/*" />
-          )}
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:categoryId" element={<ProductsPage />} />
+          <Route path="/product/:productId" element={<ProductDetailPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
-      </>
-    </Suspense>
+      </Suspense>
+    </PageLoadingWrapper>
   );
 }
 

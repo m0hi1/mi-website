@@ -145,7 +145,7 @@ const Home = () => {
       <section className="relative bg-muted py-24 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <img
-            src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&q=80"
+            src="/images/hero-background.jpg" // Replaced network image
             alt="Background pattern"
             className="w-full h-full object-cover"
           />
@@ -174,7 +174,7 @@ const Home = () => {
           <div className="mt-12 flex justify-center gap-8">
             <div className="flex items-center">
               <img
-                src="https://api.dicebear.com/7.x/shapes/svg?seed=iso9001"
+                src="/images/iso9001-certification.svg" // Replaced network image
                 alt="ISO 9001"
                 className="h-12 w-12"
               />
@@ -184,7 +184,7 @@ const Home = () => {
             </div>
             <div className="flex items-center">
               <img
-                src="https://api.dicebear.com/7.x/shapes/svg?seed=ce"
+                src="/images/ce-certification.svg" // Replaced network image
                 alt="CE Mark"
                 className="h-12 w-12"
               />
@@ -192,7 +192,7 @@ const Home = () => {
             </div>
             <div className="flex items-center">
               <img
-                src="https://api.dicebear.com/7.x/shapes/svg?seed=rohs"
+                src="/images/rohs-compliant.svg" // Replaced network image
                 alt="RoHS"
                 className="h-12 w-12"
               />

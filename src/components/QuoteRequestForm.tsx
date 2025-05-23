@@ -22,11 +22,15 @@ import { Checkbox } from "./ui/checkbox";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { Alert, AlertDescription } from "./ui/alert";
 
+// Define our own CheckedState type since it's not exported from @radix-ui/react-checkbox
+type CheckedState = boolean | 'indeterminate';
+
 interface QuoteRequestFormProps {
   productName?: string;
   productId?: string;
   onSubmit?: (formData: FormData) => void;
   onCancel?: () => void;
+  onClose?: () => void; // Add onClose prop
 }
 
 interface FormData {
@@ -45,6 +49,7 @@ const QuoteRequestForm = ({
   productId = "",
   onSubmit,
   onCancel,
+  onClose, // Destructure onClose
 }: QuoteRequestFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -85,8 +90,8 @@ const QuoteRequestForm = ({
     }
   };
 
-  const handleCheckboxChange = (checked: boolean) => {
-    setFormData((prev) => ({ ...prev, agreeToTerms: checked }));
+  const handleCheckboxChange = (checked: CheckedState) => {
+    setFormData((prev) => ({ ...prev, agreeToTerms: checked === true }));
 
     // Clear error when field is edited
     if (errors.agreeToTerms) {
@@ -359,10 +364,10 @@ const QuoteRequestForm = ({
       </CardContent>
 
       <CardFooter className="flex justify-between border-t p-6">
-        {onCancel && (
+        {(onCancel || onClose) && ( // Check for onClose as well
           <Button
             variant="outline"
-            onClick={onCancel}
+            onClick={onCancel || onClose} // Use onCancel or onClose
             disabled={formStatus === "submitting"}
           >
             Cancel
